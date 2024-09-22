@@ -31,7 +31,7 @@ Threshold=50
 while IFS= read -r line
 do
 DISK_USED=$(echo $line | awk -F " " '{print $6F}')
-MOUNTED_ON=$(echo $line | awk -F " " '{print $Nf}')
+MOUNTED_ON=$(echo $line | awk -F " " '{print $NF}')
 if [ $DISK_USED -gt $Threshold ]
 then
     echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED"
