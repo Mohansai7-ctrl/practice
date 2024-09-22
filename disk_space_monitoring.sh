@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USER(){
-    if [ $userid -ne o ]
+    if [ $userid -ne 0 ]
         echo "As you didnt have root access, pls run scripts with root access to proceed further."
         exit 1
     else
