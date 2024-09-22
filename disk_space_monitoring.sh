@@ -3,8 +3,9 @@ userid=$(id -u)
 
 mkdir -p /var/log/disk_space
 FOLDER_PATH="/var/log/disk_space"
-TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE=($FOLDER_PATH-$TIMESTAMP-disk_usage.log)
+SCRIPT_NAME="(echo $0 | awk -F "." '{print $1F}')"
+TIMESTAMP=$(date +%Y-%h-%m-%H-%M-%S)
+LOG_FILE=($FOLDER_PATH/$SCRIPT_NAME/$TIMESTAMP-app.log)
 
 USER(){
     if [ ${userid} -ne 0 ]
