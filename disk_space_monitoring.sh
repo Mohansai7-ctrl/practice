@@ -1,15 +1,15 @@
 #!/bin/bash
 userid=$(id -u)
 
-USER(){
-    if [ $userid -ne 0 ]
-        echo "As you didnt have root access, pls run scripts with root access to proceed further."
-        exit 1
-    else
-        echo "Hurray! You are having root access, hence proceeding further."
-    fi
+# USER(){
+#     if [ $userid -ne 0 ]
+#         echo "As you didnt have root access, pls run scripts with root access to proceed further."
+#         exit 1
+#     else
+#         echo "Hurray! You are having root access, hence proceeding further."
+#     fi
 
-}
+# }
 
 VALIDATE(){
     if [ $1 -ne 0 ]
