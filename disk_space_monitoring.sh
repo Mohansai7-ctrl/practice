@@ -8,6 +8,9 @@ SCRIPT_NAME=$(echo $0 | awk -F "." '{print $1F}')
 TIMESTAMP=$(date +%Y-%h-%m-%H-%M-%S)
 LOG_FILE="$FOLDER_PATH/$SCRIPT_NAME/$TIMESTAMP-app.log"
 
+echo $LOG_FILE
+
+
 USER(){
     if [ ${userid} -ne 0 ]
     then
@@ -43,10 +46,10 @@ MOUNTED_ON=$(echo $line | awk -F " " '{print $NF}')
 if [ ${DISK_USED} -gt ${Threshold} ]
 then
     echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED" &>>$LOG_FILE
-    echo "Those filesystems mounted on $MOUNTED_ON" | tee -a $LOG_FILE
+    echo "Those filesystems mounted on ${MOUNTED_ON}" | tee -a $LOG_FILE
     VALIDATE $? "Extraction of filesystems" 
 else
-    echo "Dont have any files which exceed the $Threshold" &>>$LOG_FILE
+    echo "Dont have any files which exceed the ${Threshold}" &>>$LOG_FILE
 fi
 
 
