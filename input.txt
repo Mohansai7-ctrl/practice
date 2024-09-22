@@ -1,0 +1,3 @@
+mysql 14.2.0 pysli
+backend 12.4.0 pysli
+frontend 2.4
