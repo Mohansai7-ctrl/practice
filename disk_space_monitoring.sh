@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER() {
+USER(){
     if [ $userid -ne o ]
         echo "As you didnt have root access, pls run scripts with root access to proceed further."
         exit 1
@@ -10,7 +10,7 @@ USER() {
 
 }
 
-VALIDATE() {
+VALIDATE(){
     if [ $1 -ne 0 ]
     echo "are FAILED"
     else
@@ -25,7 +25,7 @@ USER
 DISK_FILES=$(df -hT | grep xfs)
 Threshold=50
 
-while IFS=read -r line
+while IFS= read -r line
 do
 DISK_USED=$(echo $line | awk -F " " '{print $6F}')
 MOUNTED_ON=$(echo $line | awk -F " " '{print $Nf}')
