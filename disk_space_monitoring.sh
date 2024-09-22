@@ -1,11 +1,12 @@
 #!/bin/bash
 userid=$(id -u)
 
-mkdir -p /var/log/disk_space
+
 FOLDER_PATH="/var/log/disk_space"
-SCRIPT_NAME="(echo $0 | awk -F "." '{print $1F}')"
+mkdir -p $FOLDER_PATH
+SCRIPT_NAME=$(echo $0 | awk -F "." '{print $1F}')
 TIMESTAMP=$(date +%Y-%h-%m-%H-%M-%S)
-LOG_FILE=($FOLDER_PATH/$SCRIPT_NAME/$TIMESTAMP-app.log)
+LOG_FILE="$FOLDER_PATH/$SCRIPT_NAME/$TIMESTAMP-app.log"
 
 USER(){
     if [ ${userid} -ne 0 ]
