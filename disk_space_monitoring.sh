@@ -1,21 +1,22 @@
 #!/bin/bash
 userid=$(id -u)
 
-# USER(){
-#     if [ $userid -ne 0 ]
-#         echo "As you didnt have root access, pls run scripts with root access to proceed further."
-#         exit 1
-#     else
-#         echo "Hurray! You are having root access, hence proceeding further."
-#     fi
+USER(){
+    if [ ${userid} -ne 0 ]
+        echo "As you didnt have root access, pls run scripts with root access to proceed further."
+        exit 1
+    else
+        echo "Hurray! You are having root access, hence proceeding further."
+    fi
 
-# }
+}
 
 VALIDATE(){
     if [ $1 -ne 0 ]
-    echo "are FAILED"
+    then
+        echo "are FAILED"
     else
-    echo "are SUCCESS"
+        echo "are SUCCESS"
     fi
 }
 
@@ -33,11 +34,11 @@ DISK_USED=$(echo $line | awk -F " " '{print $6F}')
 MOUNTED_ON=$(echo $line | awk -F " " '{print $Nf}')
 if [ $DISK_USED -gt $Threshold ]
 then
-echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED"
-echo "Those filesystems mounted on $MOUNTED_ON"
-VALIDATE $? "Extraction of filesystems"
+    echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED"
+    echo "Those filesystems mounted on $MOUNTED_ON"
+    VALIDATE $? "Extraction of filesystems"
 else
-echo "Dont have any files which exceed the $Threshold
+    echo "Dont have any files which exceed the $Threshold
 fi
 
 
