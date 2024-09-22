@@ -31,7 +31,7 @@ Threshold=50
 
 while IFS= read -r line
 do
-DISK_USED=$(echo $line | awk -F " " '{print $6F}')
+DISK_USED=$(echo $line | awk -F " " '{print $6F}' | cut -d "%" -f1)
 MOUNTED_ON=$(echo $line | awk -F " " '{print $NF}')
 if [ ${DISK_USED} -gt ${Threshold} ]
 then
