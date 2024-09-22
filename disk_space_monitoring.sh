@@ -1,4 +1,5 @@
 #!/bin/bash
+userid=$(id -u)
 
 USER(){
     if [ $userid -ne 0 ]
@@ -19,9 +20,10 @@ VALIDATE(){
 }
 
 
-userid=$(id -u)
+
 
 USER
+
 DISK_FILES=$(df -hT | grep xfs)
 Threshold=50
 
