@@ -2,10 +2,10 @@
 
 USER(){
     if [ $userid -ne o ]
-    echo "As you didnt have root access, pls run scripts with root access to proceed further."
-    exit 1
+        echo "As you didnt have root access, pls run scripts with root access to proceed further."
+        exit 1
     else
-    echo "Hurray! You are having root access, hence proceeding further."
+        echo "Hurray! You are having root access, hence proceeding further."
     fi
 
 }
