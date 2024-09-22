@@ -23,7 +23,7 @@ VALIDATE(){
 
 
 
-USER
+#USER
 
 DISK_FILES=$(df -hT | grep xfs)
 Threshold=50
