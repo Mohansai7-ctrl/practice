@@ -1,6 +1,11 @@
 #!/bin/bash
 userid=$(id -u)
 
+mkdir -p /var/log/disk_space
+FOLDER_PATH="/var/log/disk_space"
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+LOG_FILE=($FOLDER_PATH-$TIMESTAMP-disk_usage.log)
+
 USER(){
     if [ ${userid} -ne 0 ]
     then
@@ -35,9 +40,9 @@ DISK_USED=$(echo $line | awk -F " " '{print $6F}' | cut -d "%" -f1)
 MOUNTED_ON=$(echo $line | awk -F " " '{print $NF}')
 if [ ${DISK_USED} -gt ${Threshold} ]
 then
-    echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED"
+    echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED" &>>$LOG_FILE
     echo "Those filesystems mounted on $MOUNTED_ON"
-    VALIDATE $? "Extraction of filesystems"
+    VALIDATE $? "Extraction of filesystems" | tee -a $LOG_FILE
 else
     echo "Dont have any files which exceed the $Threshold"
 fi
