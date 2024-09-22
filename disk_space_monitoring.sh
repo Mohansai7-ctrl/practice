@@ -43,10 +43,10 @@ MOUNTED_ON=$(echo $line | awk -F " " '{print $NF}')
 if [ ${DISK_USED} -gt ${Threshold} ]
 then
     echo "Below files are execeed the disk usage more than threshold percentage, $DISK_USED" &>>$LOG_FILE
-    echo "Those filesystems mounted on $MOUNTED_ON"
-    VALIDATE $? "Extraction of filesystems" | tee -a $LOG_FILE
+    echo "Those filesystems mounted on $MOUNTED_ON" | tee -a $LOG_FILE
+    VALIDATE $? "Extraction of filesystems" 
 else
-    echo "Dont have any files which exceed the $Threshold"
+    echo "Dont have any files which exceed the $Threshold" &>>$LOG_FILE
 fi
 
 
